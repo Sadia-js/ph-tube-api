@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ph Tube Code</title>
+    <!-- CSS styles -->
+     <link rel="stylesheet" href="style.css">
+    <!-- Tailwind and Daisy UI -->   
+<link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<!-- <style>
+  .active{
+    color: white;
+    background-color: red;
+}
+</style> -->
+<body>
+    <header class="w-11/12 mx-auto">
+        <nav class="flex flex-col items-center space-y-4 md:flex-row justify-between py-6 border-b-2">
+            <div>
+                <img src="./assets/Logo.png" alt="">
+            </div>
+            <div>
+                <input id="search-input" type="text" placeholder="Type here" class="input input-bordered w-full max-w-xs" />
+            </div>
+            <div>
+                <button id="sort-btn" class="btn">Sort</button>
+            </div>
+        </nav>
+        <nav id="buttons" class="flex flex-wrap justify-center gap-10 my-6">
+        </nav>
+    </header>
+
+    <main class="w-11/12 mx-auto my-16">
+        <section id="cards-container" class="grid grid-cols-1 md:grid-cols-2 
+        lg:grid-cols-4 gap-5">
+        
+        </section>
+
+        <!-- Open the modal using ID.showModal() method -->
+<!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+<dialog id="showModalData" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="modal-container">
+
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+    </main>
+
+    <!-- script -->
+     <script src="./js/script.js"></script>
+</body>
+</html>
