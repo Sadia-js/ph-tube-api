@@ -35,25 +35,23 @@ const loadDetails = async(id) => {
     displayDetails(data.video);
 }
 
-const sortTriggered = () => {
-    fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
-    .then(res => res.json())
-    .then(data => viewsAscending(data.videos))
-    .catch(err => console.log(err))
-}
 const extractNumbs = (totalViews) => {
     const digits = totalViews.match(/\d+/)[0];
     const number = Number(digits);
     return(number);
 }
 
+const sortingClick = async() => {
+        const res = await fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+        const data = await res.json()
+        viewsAscending(data.videos);   
+}
+
 const viewsAscending = (data) =>{
-    console.log(data)
+    // console.log(data)
     data.sort((a, b) =>  extractNumbs(a.others.views) - extractNumbs(b.others.views));
     showVideosOnDisplay(data);
 }
-document.getElementById('sort-btn').addEventListener('click', sortTriggered);
-
 
 const displayDetails = (vid) => {
     const modalContainer = document.getElementById('modal-container');
@@ -126,6 +124,7 @@ const showVideosOnDisplay = (videos) => {
 const buttons = document.querySelector('#buttons');
 const displayButtons = (categoryBtn) => {
     categoryBtn.forEach(item => {
+        console.log(item)
         const div = document.createElement('div');
         div.innerHTML =
         `
@@ -135,6 +134,7 @@ const displayButtons = (categoryBtn) => {
         `
         buttons.append(div);
     });
+   
 } 
 
 let activeBtn = null;
@@ -148,7 +148,12 @@ const loadCategoryVideos = id => {
         }
         activeBtn = document.getElementById(`btn-${id}`);
         activeBtn.classList.add("active");
-        showVideosOnDisplay(data.category)
+        showVideosOnDisplay(data.category);
+        // data.category.forEach(e => {
+        //     const {others} = e;
+        //     sortingClick(others.views)
+        // }) 
+        
     })
     .catch(err => console.log(err));
 }
